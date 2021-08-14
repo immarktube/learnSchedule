@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>本包内为了研究FilterINputStream的作用</p>
+<p>经研究发现这种继承方式可以使poorCounsumer无需实现所有的Consumer的抽象方法。</p>
+<p>People类就是类似于FilterXXXStream的存在，就是中间过滤层。</p>
+<p>以下摘抄自java特种兵上卷，4.1.1</p>
+<p>它将接口的方法实现了一层通用的代码处理，也就是默认与原来的对象的功能保持一致，许多具体功能修饰可以基于这个类进一步通过继承的方式来完成，</p>
+<p>这样一来，子类就不用重写所有方法了，只要重写那些需要修改为具体特征的方法就行。</p>
+<p><strong>子类无需重写所有方法，没有重写的就使用父类的默认实现。</strong></p>
+</body>
+</html>
