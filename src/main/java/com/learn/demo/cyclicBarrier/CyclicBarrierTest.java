@@ -11,10 +11,15 @@ public class CyclicBarrierTest {
         new Thread(()->{
             try {
                 c.await();
-
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            }
+            System.out.println(3);
+        }).start();
+        new Thread(()->{
+            try {
+                c.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
             System.out.println(1);

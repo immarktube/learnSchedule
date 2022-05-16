@@ -1,10 +1,8 @@
 package com.learn.demo;
 
-import io.lettuce.core.StrAlgoArgs;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -14,6 +12,8 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 public class TestBlockingNIO {
@@ -65,5 +65,17 @@ public class TestBlockingNIO {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testBuilder(){
+        StringBuilder s = new StringBuilder();
+        s.append("sss");
+        s.append("+ddd");
+        List<String> list = new ArrayList<>();
+        list.add("fff");
+        list.add("ggg");
+        System.out.println(s);
+        System.out.println(list);
     }
 }

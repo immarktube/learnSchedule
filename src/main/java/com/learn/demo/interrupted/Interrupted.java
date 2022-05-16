@@ -1,45 +1,31 @@
 package com.learn.demo.interrupted;
 
-import com.learn.demo.utils.SleepUtils;
-
-import java.util.concurrent.TimeUnit;
-
+/**
+ * @Author Mark
+ * @Description 线程在不活跃状态下被中断会抛出异常，{@link java.lang.Thread.State }
+ * 如果不抛出异常便回不到运行状态，也就无法处理中断。
+ * @Date 12:25 2022/4/3
+ * @Param
+ * @return
+**/
 public class Interrupted {
-    public static String VO = "TEST_VOLATILE";
     public static void main(String[] args) throws Exception{
         //sleepThread 不停的尝试睡眠
-        Thread sleepThread = new Thread(new SleepRunner(),"SleepThread");
-        sleepThread.setDaemon(true);
-        //busyThread 不停的运行
-        Thread busyThread = new Thread(new BusyRunner(),"BusyRunner");
-        busyThread.setDaemon(true);
+        Thread sleepThread = new Thread(()->{
+            long startMills = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startMills < 3){
+                if (Thread.interrupted()){
+                    System.out.println("停止==========");
+                } else {
+                    System.out.println("前进");
+                }
+            }
+        });
         sleepThread.start();
-        busyThread.start();
-        //休眠五秒，让sleepThread与busythread充分运行
-//        TimeUnit.SECONDS.sleep(5);
-//        sleepThread.interrupt();
-//        busyThread.interrupt();
-//        System.out.println("SleepThread interrupted is "+sleepThread.isInterrupted());
-//        System.out.println("BUSYThread interrupted is "+busyThread.isInterrupted());
-//        SleepUtils.second(2);
-    }
-    static class SleepRunner implements Runnable{
+        // busyThread.start();
+        Thread.sleep(1);
+        sleepThread.interrupt();
 
-        @Override
-        public void run() {
-            VO = "TEST";
-            System.out.println(VO);
-            System.out.println(this.hashCode());
-        }
     }
 
-    static class BusyRunner implements Runnable{
-
-        @Override
-        public void run() {
-
-            System.out.println(VO);
-            System.out.println(this.hashCode());
-        }
-    }
 }

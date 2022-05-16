@@ -4,7 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class CountDownLatchTest {
 
-    static CountDownLatch c = new CountDownLatch(3);
+    static CountDownLatch c = new CountDownLatch(2);
 
     public static void main(String[] args) {
         new Thread(()->{

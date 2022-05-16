@@ -1,6 +1,5 @@
 package com.learn.demo.ConnectionPool;
 
-import com.sun.tools.javac.util.Assert;
 
 import java.sql.Connection;
 import java.util.LinkedList;
@@ -9,7 +8,6 @@ public class ConnectionPoll {
     private LinkedList<Connection> pool = new LinkedList<>();
 
     public ConnectionPoll(int initialSize){
-        Assert.checkNull(initialSize,"must not null");
         if (initialSize > 0){
             for (int i = 0;i < initialSize;i++){
                 pool.addLast(ConnectionDriver.createConnection());

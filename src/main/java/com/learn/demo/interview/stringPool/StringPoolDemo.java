@@ -1,7 +1,5 @@
 package com.learn.demo.interview.stringPool;
 
-import sun.misc.Version;
-
 /**
  * @create ⌚️2021-05-11 21：10
  */
@@ -17,6 +15,6 @@ public class StringPoolDemo {
         String str2 = new StringBuilder("1.8.0_").append("282").toString();
         System.out.println(str2);
         System.out.println(str2.intern());
-        System.out.println(str2 == str2.intern());
+        System.out.println(str2.intern() == str2);
     }
 }
