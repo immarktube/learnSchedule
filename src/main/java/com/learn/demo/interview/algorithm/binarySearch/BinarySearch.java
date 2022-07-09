@@ -1,4 +1,4 @@
-package com.learn.demo.interview.algorithm.firstDay;
+package com.learn.demo.interview.algorithm.binarySearch;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] nums = {-1,0,3,5,9,12};
-        System.out.println(new Solution().search(nums,2));
+        System.out.println(new Solution().search(nums,3));
         // System.out.println(ints.indexOf(nums));
     }
 
@@ -26,7 +26,7 @@ public class BinarySearch {
                 if (integers.size() < 1 || !integers.contains(target)){
                     return -1;
                 }
-            final int last = integers.get(integers.size() / 2);
+            final int last = integers.get(integers.size() >>> 1);
                 if (target > last){
                     integers = integers.subList(integers.indexOf(last),integers.size());
                 }else if (target < last){

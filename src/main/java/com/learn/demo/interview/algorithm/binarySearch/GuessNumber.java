@@ -1,4 +1,4 @@
-package com.learn.demo.interview.algorithm;
+package com.learn.demo.interview.algorithm.binarySearch;
 
 /**
  * <p> 主要用于包括XXXX</p>

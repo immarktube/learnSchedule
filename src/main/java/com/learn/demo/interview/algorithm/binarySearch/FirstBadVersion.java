@@ -1,4 +1,4 @@
-package com.learn.demo.interview.algorithm.firstDay;
+package com.learn.demo.interview.algorithm.binarySearch;
 
 public class FirstBadVersion {
 
