@@ -1,4 +1,4 @@
-package com.learn.demo.interview.algorithm.binarySearch;
+package com.learn.demo.interview.algorithm.leetcode.binarySearch;
 
 import java.util.Arrays;
 import java.util.List;

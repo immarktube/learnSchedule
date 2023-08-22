@@ -1,4 +1,4 @@
-package com.learn.demo.interview.algorithm;
+package com.learn.demo.interview.algorithm.leetcode;
 
 import java.util.ArrayList;
 import java.util.Collections;
