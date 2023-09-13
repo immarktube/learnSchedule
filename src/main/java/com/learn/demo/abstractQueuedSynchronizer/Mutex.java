@@ -1,6 +1,5 @@
 package com.learn.demo.abstractQueuedSynchronizer;
 
-import javax.xml.soap.Node;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Condition;
@@ -9,41 +8,43 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Mutex implements Lock {
 
-    private static class Sync extends AbstractQueuedSynchronizer{
+    private static class Sync extends AbstractQueuedSynchronizer {
         static ReentrantReadWriteLock s = new ReentrantReadWriteLock();
         Lock r = s.readLock();
         Lock w = s.writeLock();
 
-        protected boolean isHeldExclusively(){
+        protected boolean isHeldExclusively() {
             r.lock();
             try {
                 return getState() == 1;
-            }finally {
+            } finally {
                 r.unlock();
             }
         }
 
-        public boolean tryAcquire(int acquires){
+        public boolean tryAcquire(int acquires) {
             try {
                 w.lock();
-                if (compareAndSetState(0,1)){
+                if (compareAndSetState(0, 1)) {
                     setExclusiveOwnerThread(Thread.currentThread());
                     return true;
                 }
-            }finally {
+            } finally {
                 w.unlock();
             }
             return false;
         }
 
-        protected boolean tryRelease(int releases){
+        protected boolean tryRelease(int releases) {
             if (getState() == 0) throw new IllegalMonitorStateException();
             setExclusiveOwnerThread(null);
             setState(0);
             return true;
         }
 
-        Condition newCondition(){return new ConditionObject();}
+        Condition newCondition() {
+            return new ConditionObject();
+        }
     }
 
     private final Sync sync = new Sync();
@@ -64,7 +65,7 @@ public class Mutex implements Lock {
     }
 
     @Override
-    public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
+    public boolean tryLock(long time, TimeUnit unit) {
         return sync.tryAcquire(1);
     }
 
