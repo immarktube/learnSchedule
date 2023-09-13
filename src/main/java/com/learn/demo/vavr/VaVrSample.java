@@ -22,7 +22,7 @@ public class VaVrSample {
     public static void main(String[] args) {
         System.out.println(List.of(1, 2, 3).sum());
         Function2<Integer, Integer, Integer> divide = (a,b) -> a/b;
-
+        System.out.println(divide.apply(11));
         var safeDivide = Function2.lift(divide);
         var i1 = safeDivide.apply(1, 1);
         System.out.println(i1.get());
