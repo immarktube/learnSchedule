@@ -41,7 +41,7 @@ public class VaVrSample_2 {
             logger.info(maybeFoo.get());
         } catch (NullPointerException e) {
             // this is clearly not the correct approach
-
+            logger.info("Here are a NPE.");
         }
     }
 
